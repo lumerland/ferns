@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+    <audio id="bg-audio" src="atwi.wav" loop></audio>
+
+    <button id="audio-btn" onclick="toggleAudio()">▶</button>
 <head>
   <meta charset="UTF-8">
   <title>ASCII Art</title>
@@ -8,17 +11,54 @@
       margin: 0;
       background: black;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
+      gap: 100px;
+      padding: 100px 0;
     }
      canvas {
       filter: blur(1px) brightness(1.2) saturate(1.8);
     }
+    #audio-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.5);
+    font-size: 16px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    z-index: 100;
+    border-radius: 4px;
+    }
+
+    #audio-btn:hover {
+    border-color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.9);
+}
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.3/p5.min.js"></script>
 </head>
+<script>
+  const audio = document.getElementById("bg-audio");
+  const btn = document.getElementById("audio-btn");
+
+  function toggleAudio() {
+    if (audio.paused) {
+      audio.play();
+      btn.textContent = "♪";
+    } else {
+      audio.pause();
+      btn.textContent = "▶";
+    }
+  }
+</script>
 <body>
+  <div id="sketch1"></div>
+  <div id="sketch2"></div>
+  <div id="sketch3"></div>
   <script src="sketch.js"></script>
 </body>
 </html>
