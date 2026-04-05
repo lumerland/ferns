@@ -1,4 +1,4 @@
-let asciiChar = "@#%&$8BMW0QRDOHNKAXZUVYCLJTFIEPS?/|()1{}[]il!tfrj*+=~-_:;,.'";
+let asciiChar = "鬱龘纛龜龍驚聽顯願齒學體熱愛舞樹海電雲鳥風花山水月日木人小一";
 let video;
 let vidw = 64;
 let vidh = 48;
