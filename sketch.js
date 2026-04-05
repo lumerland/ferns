@@ -19,6 +19,7 @@ function makeSketch(videoFile, containerId) {
       cnv.parent(containerId);  // attach to the right div
       video.size(vidw, vidh);
       video.elt.muted = true;
+      video.elt.playsInline = true;
       video.loop();
       video.play();
       w = p.width / vidw;
