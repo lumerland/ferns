@@ -105,6 +105,7 @@ function makeImageSketch(imageFile, containerId, vidw, vidh) {
 // add or remove lines here for each video
 makeSketch("longgrass.mp4", "sketch1", 64, 48);
 makeSketch("blossom.mp4", "sketch2", 64, 50);
+makeSketch("trailing.mov", "sketch3", 64, 50)
 // makeSketch("lighthouse.mov", "sketch3", 64, 36); // 16:9
 // makeSketch("portrait.mp4", "sketch2", 36, 64);  // 9:16
 // makeSketch("landscape.mp4", "sketch3", 64, 36); // 16:9
