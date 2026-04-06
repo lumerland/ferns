@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-    <audio id="bg-audio" src="atwi.wav" loop></audio>
-
-    <button id="audio-btn" onclick="toggleAudio()">▶</button>
 <head>
   <meta charset="UTF-8">
   <title>ASCII Art</title>
@@ -16,36 +13,65 @@
       gap: 100px;
       padding: 100px 0;
     }
-     canvas {
+    canvas {
       filter: blur(1px) brightness(1.2) saturate(1.8);
     }
-    #audio-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: 1px solid rgba(255,255,255,0.3);
-    color: rgba(255,255,255,0.5);
-    font-size: 16px;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-    z-index: 100;
-    border-radius: 4px;
+    .sketch-row {
+      display: flex;
+      align-items: center;
+      gap: 32px;
     }
-
-    #audio-btn:hover {
-    border-color: rgba(255,255,255,0.7);
-    color: rgba(255,255,255,0.9);
-}
+    .audio-player {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .audio-player button {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.5);
+      font-size: 16px;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .audio-player button:hover {
+      border-color: rgba(255,255,255,0.7);
+      color: rgba(255,255,255,0.9);
+    }
+    .audio-player input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      writing-mode: vertical-lr;
+      direction: rtl;
+      width: 4px;
+      height: 100px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    .audio-player input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+    }
+    .audio-player label {
+      color: rgba(255,255,255,0.3);
+      font-family: monospace;
+      font-size: 10px;
+      letter-spacing: 0.05em;
+    }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.3/p5.min.js"></script>
 </head>
 <script>
-  const audio = document.getElementById("bg-audio");
-  const btn = document.getElementById("audio-btn");
-
-  function toggleAudio() {
+  function toggleTrack(id, btn) {
+    const audio = document.getElementById(id);
     if (audio.paused) {
       audio.play();
       btn.textContent = "♪";
@@ -56,10 +82,40 @@
   }
 </script>
 <body>
-  <div id="sketch1"></div>
-  <div id="sketch2"></div>
-  <div id="sketch3"></div>
+
+  <div class="sketch-row">
+    <div id="sketch1"></div>
+    <div class="audio-player">
+      <audio id="audio1" src="mom and rachael.m4a" loop></audio>
+      <button onclick="toggleTrack('audio1', this)">▶</button>
+      <input type="range" min="0" max="1" step="0.01" value="1"
+             oninput="document.getElementById('audio1').volume = this.value">
+      <label>vol</label>
+    </div>
+  </div>
+<!--
+  <div class="sketch-row">
+    <div id="sketch2"></div>
+    <div class="audio-player">
+      <audio id="audio2" src="track2.m4a" loop></audio>
+      <button onclick="toggleTrack('audio2', this)">▶</button>
+      <input type="range" min="0" max="1" step="0.01" value="1"
+             oninput="document.getElementById('audio2').volume = this.value">
+      <label>vol</label>
+    </div>
+  </div>
+
+  <div class="sketch-row">
+    <div id="sketch3"></div>
+    <div class="audio-player">
+      <audio id="audio3" src="track3.m4a" loop></audio>
+      <button onclick="toggleTrack('audio3', this)">▶</button>
+      <input type="range" min="0" max="1" step="0.01" value="1"
+             oninput="document.getElementById('audio3').volume = this.value">
+      <label>vol</label>
+    </div>
+  </div>
+-->
   <script src="sketch.js"></script>
 </body>
 </html>
- 
